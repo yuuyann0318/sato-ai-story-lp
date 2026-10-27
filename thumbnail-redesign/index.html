@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#101010">
+  <meta name="description" content="リアル密着">
+  <title>リアル密着</title>
+  <style>
+@font-face {
+  font-family: "Sato Page";
+  src: url("assets/fonts/zen-kaku-gothic-new-400.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Sato Page";
+  src: url("assets/fonts/zen-kaku-gothic-new-500.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Sato Page";
+  src: url("assets/fonts/zen-kaku-gothic-new-700.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Sato Editorial";
+  src: url("assets/fonts/noto-serif-jp.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: dark;
+  --ink: #101010;
+  --paper: #ffffff;
+  --text: #222222;
+  --secondary: #626262;
+  --gold: #d8ba74;
+  --gold-dark: #806325;
+  --line: #06c755;
+  --line-label: #00a546;
+  --line-cta-peak-x: 1.05;
+  --line-cta-second-x: 1.035;
+  --font: "Sato Page", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+  --display: "Sato Editorial", "Hiragino Mincho ProN", "Yu Mincho", serif;
+}
+
+* { box-sizing: border-box; }
+html { min-width: 280px; scroll-behavior: smooth; }
+body {
+  min-width: 280px;
+  margin: 0;
+  background: var(--ink);
+  color: #fff;
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.85;
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, p, figure { margin: 0; }
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+.wrap { width: min(calc(100% - 96px), 1160px); margin-inline: auto; }
+
+.skip-link {
+  position: fixed;
+  left: 16px;
+  top: 12px;
+  z-index: 20;
+  padding: 9px 14px;
+  background: #fff;
+  color: #181818;
+  transform: translateY(-180%);
+}
+.skip-link:focus { transform: translateY(0); }
+
+.masthead {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: 18px;
+  border-bottom: 1px solid #ffffff24;
+}
+.identity {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  line-height: 1.3;
+}
+.identity-name {
+  font-family: var(--display);
+  font-size: 1.94rem;
+  font-weight: 500;
+  letter-spacing: .1em;
+}
+.identity-divider { width: 1px; height: 1.6em; background: var(--gold); }
+.identity-purpose { color: var(--gold); font-size: 1.94rem; font-weight: 500; }
+
+.hero { padding: 38px 0 42px; }
+.hero-heading-row {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+  margin-bottom: 26px;
+}
+.hero h1 {
+  flex: none;
+  font-family: var(--display);
+  font-size: clamp(2.6rem, 4vw, 3.5rem);
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: -.035em;
+  color: #fffdf8;
+}
+.hero-rule { width: 100%; height: 1px; background: linear-gradient(90deg, #d8ba74b8, #d8ba7412); }
+.poster-frame {
+  padding: clamp(7px, 1vw, 12px);
+  border: 1px solid #d8ba746b;
+  background: #050505;
+  box-shadow: 0 26px 68px #0009;
+}
+.poster-frame img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: contain; }
+
+.message-section {
+  color-scheme: light;
+  padding: 72px 0 84px;
+  background: var(--paper);
+  color: var(--text);
+}
+.message-layout {
+  display: grid;
+  grid-template-columns: minmax(180px, 260px) minmax(0, 1fr);
+  gap: 72px;
+  align-items: start;
+}
+.message-heading {
+  position: sticky;
+  top: 28px;
+  padding-top: 2px;
+}
+.message-heading::before {
+  content: "";
+  display: block;
+  width: 42px;
+  height: 1px;
+  margin-bottom: 18px;
+  background: var(--gold-dark);
+}
+.message-heading h2 {
+  font-family: var(--display);
+  font-size: 1.18rem;
+  font-weight: 500;
+  line-height: 1.75;
+  color: var(--gold-dark);
+  letter-spacing: .03em;
+}
+.message-column { min-width: 0; max-width: 44rem; }
+.message-copy {
+  display: grid;
+  gap: 1.55em;
+  font-size: clamp(1.08rem, 1.45vw, 1.18rem);
+  font-weight: 400;
+  line-height: 2.05;
+  letter-spacing: .015em;
+}
+.message-copy p { min-width: 0; }
+.keep { display: inline-block; }
+.question {
+  margin-block: .25em;
+  padding: .65em 0 .65em 1em;
+  border-left: 2px solid var(--gold);
+  font-family: var(--display);
+  font-size: clamp(1.45rem, 2.3vw, 1.85rem);
+  font-weight: 500;
+  line-height: 1.75;
+  color: #332b1d;
+}
+.question span { display: inline-block; }
+.decision {
+  margin-top: .25em;
+  padding-top: 1.3em;
+  border-top: 1px solid #d8ba7480;
+}
+.decision strong {
+  display: block;
+  margin-top: .32em;
+  font-family: var(--display);
+  font-size: clamp(1.55rem, 2.45vw, 2rem);
+  font-weight: 500;
+  line-height: 1.75;
+  letter-spacing: .005em;
+}
+.decision strong span { display: inline-block; }
+
+.line-cta {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: 76px minmax(0, 1fr) 54px;
+  align-items: center;
+  width: min(100%, 640px);
+  min-height: 88px;
+  margin: 46px auto 0;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 16px;
+  font-size: clamp(1.25rem, 2vw, 1.625rem);
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+}
+.line-cta__surface {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border: 2px solid var(--line);
+  border-radius: inherit;
+  background: var(--line-label);
+  box-shadow: 0 7px 0 #007b35, 0 14px 34px #06c75542;
+  transform-origin: center;
+  transform: translateY(0) scale(1);
+}
+.line-cta__icon-wrap,
+.line-cta__label,
+.line-cta__chevron { position: relative; z-index: 1; transform: none; }
+.line-cta__icon-wrap {
+  align-self: stretch;
+  display: grid;
+  place-items: center;
+  border-radius: 14px 0 0 14px;
+  border-right: 1px solid #ffffff5e;
+  background: var(--line);
+}
+.line-cta__icon {
+  display: block;
+  width: auto;
+  height: 46px;
+  transform: none;
+}
+.line-cta__label {
+  min-width: 0;
+  padding-inline: 18px;
+  color: #fff;
+  white-space: nowrap;
+  text-shadow: 0 1px 1px #00672db8;
+}
+.line-cta__chevron {
+  width: 15px;
+  height: 15px;
+  justify-self: center;
+  border-top: 3px solid #fff;
+  border-right: 3px solid #fff;
+  transform: rotate(45deg);
+}
+.line-cta[aria-disabled="true"] { cursor: default; }
+.line-cta.is-spotlit .line-cta__surface {
+  animation: line-cta-arrival 3.6s cubic-bezier(.22, .61, .36, 1) 1 both;
+}
+
+@keyframes line-cta-arrival {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 7px 0 #007b35, 0 14px 34px #06c75542;
+  }
+  16% {
+    transform: translateY(-10px) scale(var(--line-cta-peak-x), 1.22);
+    box-shadow: 0 10px 0 #007b35, 0 20px 58px #06c755c2;
+  }
+  30% {
+    transform: translateY(3px) scale(.99, .96);
+    box-shadow: 0 4px 0 #007b35, 0 10px 28px #06c7554d;
+  }
+  60% {
+    transform: translateY(-7px) scale(var(--line-cta-second-x), 1.16);
+    box-shadow: 0 9px 0 #007b35, 0 18px 48px #06c7559e;
+  }
+  74% { transform: translateY(2px) scale(.995, .98); }
+  84% { transform: translateY(0) scale(1); }
+}
+
+@media (min-width: 1600px) {
+  .wrap { width: min(calc(100% - 144px), 1280px); }
+  .message-layout { grid-template-columns: 280px minmax(0, 1fr); gap: 96px; }
+}
+
+@media (max-width: 899px) {
+  .wrap { width: min(calc(100% - 64px), 740px); }
+  .hero { padding-block: 32px 38px; }
+  .message-section { padding-block: 58px 70px; }
+  .message-layout { grid-template-columns: 1fr; gap: 28px; }
+  .message-heading { position: static; }
+  .message-column { max-width: none; }
+}
+
+@media (max-width: 700px) {
+  :root { --line-cta-peak-x: 1.035; --line-cta-second-x: 1.025; }
+}
+
+@media (max-width: 599px) {
+  .wrap { width: calc(100% - 40px); }
+  .masthead { padding-block: 16px; }
+  .identity { gap: 12px; }
+  .identity-name, .identity-purpose { font-size: 1.7rem; }
+  .identity-divider { height: 1.35em; }
+  .hero { padding: 26px 0 28px; }
+  .hero-heading-row { gap: 18px; margin-bottom: 21px; }
+  .hero h1 { font-size: clamp(2.05rem, 10vw, 2.65rem); line-height: 1.35; }
+  .poster-frame {
+    width: calc(100% + 40px);
+    margin-inline: -20px;
+    padding: 0;
+    border-inline: 0;
+  }
+  .message-section { padding: 46px 0 58px; }
+  .message-layout { gap: 24px; }
+  .message-heading::before { margin-bottom: 14px; }
+  .message-heading h2 { font-size: 1.08rem; }
+  .message-copy { gap: 1.45em; font-size: 1.125rem; line-height: 2; }
+  .question { font-size: 1.45rem; }
+  .decision strong { font-size: 1.55rem; }
+  .line-cta {
+    grid-template-columns: 64px minmax(0, 1fr) 38px;
+    width: calc(100% + 16px);
+    min-height: 80px;
+    margin-inline: -8px;
+    border-radius: 15px;
+    font-size: 1.25rem;
+  }
+  .line-cta__icon-wrap { border-radius: 13px 0 0 13px; }
+  .line-cta__icon { height: 40px; }
+  .line-cta__label { padding-inline: 8px; }
+  .line-cta__chevron { width: 13px; height: 13px; border-width: 3px; }
+}
+
+@media (max-width: 319px) {
+  .wrap { width: calc(100% - 32px); }
+  .poster-frame { width: calc(100% + 32px); margin-inline: -16px; }
+  .identity-name, .identity-purpose { font-size: 1.5rem; }
+  .hero h1 { font-size: 2rem; }
+  .message-copy { font-size: 1.08rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .line-cta.is-spotlit .line-cta__surface { animation: none !important; transform: none !important; }
+}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#message">メッセージへ進む</a>
+
+  <header class="masthead wrap">
+    <div class="identity" aria-label="さと 密着動画">
+      <span class="identity-name">さと</span>
+      <span class="identity-divider" aria-hidden="true"></span>
+      <span class="identity-purpose">密着動画</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="page-title">
+      <div class="wrap">
+        <div class="hero-heading-row">
+          <h1 id="page-title">リアル密着</h1>
+          <span class="hero-rule" aria-hidden="true"></span>
+        </div>
+
+        <figure class="poster-frame">
+          <img src="assets/poster.png" width="1920" height="1080" alt="リアル密着の動画サムネイル" fetchpriority="high" decoding="async">
+        </figure>
+      </div>
+    </section>
+
+    <section class="message-section" id="message" aria-labelledby="message-title">
+      <div class="wrap message-layout">
+        <div class="message-heading">
+          <h2 id="message-title">さとからのメッセージ</h2>
+        </div>
+
+        <div class="message-column">
+          <div class="message-copy" data-message>
+            <p>私は決して余裕があったから始めたわけでも、甘い覚悟で始めた<span class="keep">わけではありません。</span><br data-personal-line-break>ただ、本気で、自分の夢と向き合い、マイナスの力をプラスに変えて、現状を変えるために自ら経験したことのないAIという世界に飛び込み、ここまでの結果を残すまでになりました。</p>
+            <p class="question"><span>あなたは今</span><span>どんな未来を</span><span>想像していますか？</span></p>
+            <p><span class="keep">子どもや孫と一緒に</span><span class="keep">旅行に行き、</span><span class="keep">旅費を負担できたり、</span><span class="keep">ランドセルを買ったり、</span><span class="keep">お年玉をあげたり。</span></p>
+            <p><span class="keep">行きたい国や場所、</span><span class="keep">自分自身の美容や趣味に</span><span class="keep">お金と時間を投資したり。</span></p>
+            <p>そんないわば当たり前の生活を今手に入れられていますか？将来手に入れられそうですか？</p>
+            <p>もし、そうではないとしたら、あなたは何を捨てて、どこまで挑戦できますか？</p>
+            <p><span class="keep">私は絶対に諦めず、</span><span class="keep">お店を取り戻して、</span><span class="keep">助けてくれたみんなに</span><span class="keep">恩返しをするまで</span><span class="keep">絶対にあきらめません。</span></p>
+            <p>私と一緒にみんなも頑張りませんか？</p>
+            <p><span class="keep">私はもう何個も</span><span class="keep">自己投資をしてきていて、</span><span class="keep">ここまでいい環境は</span><span class="keep">絶対に他にないなと</span><span class="keep">確信しています。</span></p>
+            <p class="decision">最後、ここで、<strong><span>自分の手で、</span><span>人生を変える</span><span>チャンスを</span><span>掴み取ってください。</span></strong></p>
+            <p>では、次はオフ会などで直接お会いできるのを楽しみにしています！</p>
+          </div>
+
+          <a class="line-cta" data-line-cta aria-disabled="true" tabindex="-1" aria-label="LINEで次へ進む">
+            <span class="line-cta__surface" aria-hidden="true"></span>
+            <span class="line-cta__icon-wrap" aria-hidden="true">
+              <img class="line-cta__icon" src="assets/line-brand-icon.png" width="1001" height="1000" alt="" decoding="async">
+            </span>
+            <span class="line-cta__label">LINEで次へ進む</span>
+            <span class="line-cta__chevron" aria-hidden="true"></span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+(() => {
+  const cta = document.querySelector("[data-line-cta]");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  if (!cta || reduceMotion.matches || !("IntersectionObserver" in window)) return;
+
+  let played = false;
+  const observer = new IntersectionObserver((entries) => {
+    if (played || !entries.some((entry) => entry.isIntersecting)) return;
+    played = true;
+    observer.disconnect();
+    cta.classList.add("is-spotlit");
+    cta.addEventListener("animationend", () => {
+      cta.classList.remove("is-spotlit");
+    }, { once: true });
+  }, { threshold: 0.35 });
+
+  reduceMotion.addEventListener?.("change", (event) => {
+    if (!event.matches) return;
+    observer.disconnect();
+    cta.classList.remove("is-spotlit");
+  });
+  observer.observe(cta);
+})();
+  </script>
+</body>
+</html>
