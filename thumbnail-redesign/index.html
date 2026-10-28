@@ -9,27 +9,6 @@
   <title>リアル密着</title>
   <style>
 @font-face {
-  font-family: "Sato Page";
-  src: url("assets/fonts/zen-kaku-gothic-new-400.woff2") format("woff2");
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Sato Page";
-  src: url("assets/fonts/zen-kaku-gothic-new-500.woff2") format("woff2");
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Sato Page";
-  src: url("assets/fonts/zen-kaku-gothic-new-700.woff2") format("woff2");
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-}
-@font-face {
   font-family: "Sato Editorial";
   src: url("assets/fonts/noto-serif-jp.woff2") format("woff2");
   font-style: normal;
@@ -49,7 +28,7 @@
   --line-label: #00a546;
   --line-cta-peak-x: 1.05;
   --line-cta-second-x: 1.035;
-  --font: "Sato Page", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+  --font: "Sato Editorial", "Hiragino Mincho ProN", "Yu Mincho", serif;
   --display: "Sato Editorial", "Hiragino Mincho ProN", "Yu Mincho", serif;
 }
 
@@ -83,29 +62,6 @@ a { color: inherit; }
 }
 .skip-link:focus { transform: translateY(0); }
 
-.masthead {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-block: 18px;
-  border-bottom: 1px solid #ffffff24;
-}
-.identity {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  line-height: 1.3;
-}
-.identity-name {
-  font-family: var(--display);
-  font-size: 1.94rem;
-  font-weight: 500;
-  letter-spacing: .1em;
-}
-.identity-divider { width: 1px; height: 1.6em; background: var(--gold); }
-.identity-purpose { color: var(--gold); font-size: 1.94rem; font-weight: 500; }
-
 .hero { padding: 38px 0 42px; }
 .hero-heading-row {
   display: flex;
@@ -116,12 +72,13 @@ a { color: inherit; }
 .hero h1 {
   flex: none;
   font-family: var(--display);
-  font-size: clamp(2.6rem, 4vw, 3.5rem);
+  font-size: clamp(7rem, 12vw, 10.5rem);
   font-weight: 500;
-  line-height: 1.35;
-  letter-spacing: -.035em;
+  line-height: 1;
+  letter-spacing: -.055em;
   color: #fffdf8;
 }
+.hero h1 span { display: inline; }
 .hero-rule { width: 100%; height: 1px; background: linear-gradient(90deg, #d8ba74b8, #d8ba7412); }
 .poster-frame {
   padding: clamp(7px, 1vw, 12px);
@@ -174,6 +131,7 @@ a { color: inherit; }
   letter-spacing: .015em;
 }
 .message-copy p { min-width: 0; }
+.message-copy [data-opening-continuation] { margin-top: .5em; }
 .keep { display: inline-block; }
 .question {
   margin-block: .25em;
@@ -304,17 +262,16 @@ a { color: inherit; }
 
 @media (max-width: 700px) {
   :root { --line-cta-peak-x: 1.035; --line-cta-second-x: 1.025; }
+  .hero-heading-row { display: block; }
+  .hero h1 { font-size: clamp(5rem, 30vw, 7.3rem); line-height: .96; }
+  .hero h1 span { display: block; }
+  .hero-rule { display: block; margin-top: 16px; }
 }
 
 @media (max-width: 599px) {
   .wrap { width: calc(100% - 40px); }
-  .masthead { padding-block: 16px; }
-  .identity { gap: 12px; }
-  .identity-name, .identity-purpose { font-size: 1.7rem; }
-  .identity-divider { height: 1.35em; }
   .hero { padding: 26px 0 28px; }
   .hero-heading-row { gap: 18px; margin-bottom: 21px; }
-  .hero h1 { font-size: clamp(2.05rem, 10vw, 2.65rem); line-height: 1.35; }
   .poster-frame {
     width: calc(100% + 40px);
     margin-inline: -20px;
@@ -326,6 +283,7 @@ a { color: inherit; }
   .message-heading::before { margin-bottom: 14px; }
   .message-heading h2 { font-size: 1.08rem; }
   .message-copy { gap: 1.45em; font-size: 1.125rem; line-height: 2; }
+  .message-copy [data-opening-continuation] { margin-top: .55em; }
   .question { font-size: 1.45rem; }
   .decision strong { font-size: 1.55rem; }
   .line-cta {
@@ -345,8 +303,6 @@ a { color: inherit; }
 @media (max-width: 319px) {
   .wrap { width: calc(100% - 32px); }
   .poster-frame { width: calc(100% + 32px); margin-inline: -16px; }
-  .identity-name, .identity-purpose { font-size: 1.5rem; }
-  .hero h1 { font-size: 2rem; }
   .message-copy { font-size: 1.08rem; }
 }
 
@@ -359,19 +315,11 @@ a { color: inherit; }
 <body>
   <a class="skip-link" href="#message">メッセージへ進む</a>
 
-  <header class="masthead wrap">
-    <div class="identity" aria-label="さと 密着動画">
-      <span class="identity-name">さと</span>
-      <span class="identity-divider" aria-hidden="true"></span>
-      <span class="identity-purpose">密着動画</span>
-    </div>
-  </header>
-
   <main>
     <section class="hero" aria-labelledby="page-title">
       <div class="wrap">
         <div class="hero-heading-row">
-          <h1 id="page-title">リアル密着</h1>
+          <h1 id="page-title"><span>リアル</span><span>密着</span></h1>
           <span class="hero-rule" aria-hidden="true"></span>
         </div>
 
@@ -389,17 +337,17 @@ a { color: inherit; }
 
         <div class="message-column">
           <div class="message-copy" data-message>
-            <p>私は決して余裕があったから始めたわけでも、甘い覚悟で始めた<span class="keep">わけではありません。</span><br data-personal-line-break>ただ、本気で、自分の夢と向き合い、マイナスの力をプラスに変えて、現状を変えるために自ら経験したことのないAIという世界に飛び込み、ここまでの結果を残すまでになりました。</p>
+            <p>私は決して余裕があったから始めたわけでも、甘い覚悟で始めた<span class="keep">わけではありません。</span></p>
+            <p data-opening-continuation>ただ、本気で、自分の夢と向き合い、マイナスの力をプラスに変えて、現状を変えるために自ら経験したことのないAIという世界に飛び込み、ここまでの結果を残すまでになりました。</p>
             <p class="question"><span>あなたは今</span><span>どんな未来を</span><span>想像していますか？</span></p>
-            <p><span class="keep">子どもや孫と一緒に</span><span class="keep">旅行に行き、</span><span class="keep">旅費を負担できたり、</span><span class="keep">ランドセルを買ったり、</span><span class="keep">お年玉をあげたり。</span></p>
+            <p><span class="keep">子どもや孫と一緒に</span><span class="keep">旅行した時に、</span><span class="keep">旅費を負担できたり、</span><span class="keep">ランドセルを買ったり、</span><span class="keep">お年玉をあげたり。</span></p>
             <p><span class="keep">行きたい国や場所、</span><span class="keep">自分自身の美容や趣味に</span><span class="keep">お金と時間を投資したり。</span></p>
-            <p>そんないわば当たり前の生活を今手に入れられていますか？将来手に入れられそうですか？</p>
+            <p>そんないわば当たり前の生活を今手に入れられていますか？<br data-future-line-break>将来手に入れられそうですか？</p>
             <p>もし、そうではないとしたら、あなたは何を捨てて、どこまで挑戦できますか？</p>
             <p><span class="keep">私は絶対に諦めず、</span><span class="keep">お店を取り戻して、</span><span class="keep">助けてくれたみんなに</span><span class="keep">恩返しをするまで</span><span class="keep">絶対にあきらめません。</span></p>
-            <p>私と一緒にみんなも頑張りませんか？</p>
-            <p><span class="keep">私はもう何個も</span><span class="keep">自己投資をしてきていて、</span><span class="keep">ここまでいい環境は</span><span class="keep">絶対に他にないなと</span><span class="keep">確信しています。</span></p>
+            <p>私と一緒にみんなも<span class="keep">頑張りませんか？</span></p>
             <p class="decision">最後、ここで、<strong><span>自分の手で、</span><span>人生を変える</span><span>チャンスを</span><span>掴み取ってください。</span></strong></p>
-            <p>では、次はオフ会などで直接お会いできるのを楽しみにしています！</p>
+            <p>では、次はオフ会などで直接お会いできるのを<span class="keep">楽しみにしています！</span></p>
           </div>
 
           <a class="line-cta" data-line-cta aria-disabled="true" tabindex="-1" aria-label="LINEで次へ進む">
