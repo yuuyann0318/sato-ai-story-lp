@@ -126,12 +126,13 @@ a { color: inherit; }
   display: grid;
   gap: 1.55em;
   font-size: clamp(1.08rem, 1.45vw, 1.18rem);
-  font-weight: 400;
-  line-height: 2.05;
+  font-weight: 500;
+  line-height: 1.95;
   letter-spacing: .015em;
 }
 .message-copy p { min-width: 0; }
 .message-copy [data-opening-continuation] { margin-top: .5em; }
+.phrase,
 .keep { display: inline-block; }
 .question {
   margin-block: .25em;
@@ -222,6 +223,7 @@ a { color: inherit; }
   transform: rotate(45deg);
 }
 .line-cta[aria-disabled="true"] { cursor: default; }
+.line-cta--hero { margin-top: clamp(32px, 4vw, 48px); }
 .line-cta.is-spotlit .line-cta__surface {
   animation: line-cta-arrival 3.6s cubic-bezier(.22, .61, .36, 1) 1 both;
 }
@@ -255,18 +257,48 @@ a { color: inherit; }
 @media (max-width: 899px) {
   .wrap { width: min(calc(100% - 64px), 740px); }
   .hero { padding-block: 32px 38px; }
+  .hero-heading-row { display: block; }
+  .hero h1 {
+    font-size: clamp(3rem, 17.5vw, 7.25rem);
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .hero h1 span { display: inline; }
+  .hero-rule { display: block; margin-top: 16px; }
   .message-section { padding-block: 58px 70px; }
   .message-layout { grid-template-columns: 1fr; gap: 28px; }
-  .message-heading { position: static; }
-  .message-column { max-width: none; }
+  .message-heading { position: static; width: min(100%, 42rem); margin-inline: auto; }
+  .message-column { width: min(100%, 42rem); max-width: none; margin-inline: auto; }
+  .message-copy {
+    font-size: clamp(1.0625rem, calc(1rem + .25vw), 1.125rem);
+    line-height: 1.9;
+    letter-spacing: .01em;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1100px) and (orientation: portrait) {
+  .wrap { width: min(calc(100% - 64px), 960px); }
+  .hero { padding-block: 32px 38px; }
+  .hero-heading-row { display: block; }
+  .hero h1 {
+    font-size: clamp(6rem, 12vw, 8rem);
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .hero-rule { display: block; margin-top: 16px; }
+  .message-section { padding-block: 58px 70px; }
+  .message-layout { grid-template-columns: 1fr; gap: 28px; }
+  .message-heading { position: static; width: min(100%, 42rem); margin-inline: auto; }
+  .message-column { width: min(100%, 42rem); max-width: none; margin-inline: auto; }
+  .message-copy {
+    font-size: clamp(1.0625rem, 1.75vw, 1.125rem);
+    line-height: 1.9;
+    letter-spacing: .01em;
+  }
 }
 
 @media (max-width: 700px) {
   :root { --line-cta-peak-x: 1.035; --line-cta-second-x: 1.025; }
-  .hero-heading-row { display: block; }
-  .hero h1 { font-size: clamp(5rem, 30vw, 7.3rem); line-height: .96; }
-  .hero h1 span { display: block; }
-  .hero-rule { display: block; margin-top: 16px; }
 }
 
 @media (max-width: 599px) {
@@ -283,7 +315,7 @@ a { color: inherit; }
   .message-layout { gap: 24px; }
   .message-heading::before { margin-bottom: 14px; }
   .message-heading h2 { font-size: 1.08rem; }
-  .message-copy { gap: 1.45em; font-size: 1.125rem; line-height: 2; }
+  .message-copy { gap: 1.45em; }
   .message-copy [data-opening-continuation] { margin-top: .55em; }
   .question { font-size: 1.45rem; }
   .decision strong { font-size: 1.55rem; }
@@ -304,7 +336,7 @@ a { color: inherit; }
 @media (max-width: 319px) {
   .wrap { width: calc(100% - 32px); }
   .poster-frame { width: calc(100% + 32px); margin-inline: -16px; }
-  .message-copy { font-size: 1.08rem; }
+  .message-copy { font-size: 1.0625rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -327,6 +359,15 @@ a { color: inherit; }
         <figure class="poster-frame">
           <img src="assets/poster.png" width="1920" height="1080" alt="リアル密着の動画サムネイル" fetchpriority="high" decoding="async">
         </figure>
+
+        <a class="line-cta line-cta--hero" data-line-cta aria-disabled="true" tabindex="-1" aria-label="AI在宅ワーク体験会に申し込む！">
+          <span class="line-cta__surface" aria-hidden="true"></span>
+          <span class="line-cta__icon-wrap" aria-hidden="true">
+            <img class="line-cta__icon" src="assets/line-brand-icon.png" width="1001" height="1000" alt="" decoding="async">
+          </span>
+          <span class="line-cta__label"><span>AI在宅ワーク</span><span>体験会に</span><span>申し込む！</span></span>
+          <span class="line-cta__chevron" aria-hidden="true"></span>
+        </a>
       </div>
     </section>
 
@@ -338,17 +379,17 @@ a { color: inherit; }
 
         <div class="message-column">
           <div class="message-copy" data-message>
-            <p>私は決して余裕があったから始めたわけでも、甘い覚悟で始めた<span class="keep">わけではありません。</span></p>
-            <p data-opening-continuation>ただ、本気で、自分の夢と向き合い、マイナスの力をプラスに変えて、現状を変えるために自ら経験したことのないAIという世界に飛び込み、ここまでの結果を残すまでになりました。</p>
-            <p class="question"><span>あなたは今</span><span>どんな未来を</span><span>想像していますか？</span></p>
+            <p><span class="phrase">私は決して</span><span class="phrase">余裕があったから</span><span class="phrase">始めたわけでも、</span><span class="phrase">甘い覚悟で</span><span class="phrase">始めた</span><span class="keep">わけではありません。</span></p>
+            <p data-opening-continuation><span class="phrase">ただ、本気で、</span><span class="phrase">自分の夢と向き合い、</span><span class="phrase">マイナスの力を</span><span class="phrase">プラスに変えて、</span><span class="phrase">現状を変えるために</span><span class="phrase">自ら経験したことのない</span><span class="phrase">AIという世界に飛び込み、</span><span class="phrase">ここまでの結果を</span><span class="phrase">残すまでになりました。</span></p>
+            <p class="question"><span class="phrase">あなたは今</span><span class="phrase">どんな未来を</span><span class="phrase">想像していますか？</span></p>
             <p><span class="keep">子どもや孫と一緒に</span><span class="keep">旅行した時に、</span><span class="keep">旅費を負担できたり、</span><span class="keep">ランドセルを買ったり、</span><span class="keep">お年玉をあげたり。</span></p>
             <p><span class="keep">行きたい国や場所、</span><span class="keep">自分自身の美容や趣味に</span><span class="keep">お金と時間を投資したり。</span></p>
-            <p>そんないわば”当たり前”の生活を今手に入れられていますか？<br data-future-line-break>将来手に入れられそうですか？</p>
-            <p>もし、そうではないとしたら、あなたは何を捨てて、どこまで挑戦できますか？</p>
+            <p><span class="phrase">そんないわば</span><span class="phrase">”当たり前”の生活を</span><span class="phrase">今手に入れられていますか？</span><br data-future-line-break><span class="keep">将来手に入れられそうですか？</span></p>
+            <p><span class="phrase">もし、</span><span class="phrase">そうではないとしたら、</span><span class="phrase">あなたは何を捨てて、</span><span class="phrase">どこまで挑戦できますか？</span></p>
             <p><span class="keep">私は絶対に諦めず、</span><span class="keep">お店を取り戻して、</span><span class="keep">助けてくれたみんなに</span><span class="keep">恩返しをするまで</span><span class="keep">絶対にあきらめません。</span></p>
-            <p>私と一緒にみんなも<span class="keep">頑張りませんか？</span></p>
-            <p class="decision">最後、ここで、<strong><span>自分の手で、</span><span>人生を変える</span><span>チャンスを</span><span>掴み取ってください。</span></strong></p>
-            <p>では、次はオフ会などで直接お会いできるのを<span class="keep">楽しみにしています！</span></p>
+            <p><span class="phrase">私と一緒に</span><span class="phrase">みんなも</span><span class="keep">頑張りませんか？</span></p>
+            <p class="decision"><span class="phrase">最後、ここで、</span><strong><span>自分の手で、</span><span>人生を変える</span><span>チャンスを</span><span>掴み取ってください。</span></strong></p>
+            <p><span class="phrase">では、次は</span><span class="phrase">オフ会などで</span><span class="phrase">直接お会いできるのを</span><span class="keep">楽しみにしています！</span></p>
           </div>
 
           <a class="line-cta" data-line-cta aria-disabled="true" tabindex="-1" aria-label="AI在宅ワーク体験会に申し込む！">
@@ -366,27 +407,32 @@ a { color: inherit; }
 
   <script>
 (() => {
-  const cta = document.querySelector("[data-line-cta]");
+  const ctas = [...document.querySelectorAll("[data-line-cta]")];
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-  if (!cta || reduceMotion.matches || !("IntersectionObserver" in window)) return;
+  if (!ctas.length || reduceMotion.matches || !("IntersectionObserver" in window)) return;
 
-  let played = false;
-  const observer = new IntersectionObserver((entries) => {
-    if (played || !entries.some((entry) => entry.isIntersecting)) return;
-    played = true;
-    observer.disconnect();
-    cta.classList.add("is-spotlit");
-    cta.addEventListener("animationend", () => {
-      cta.classList.remove("is-spotlit");
-    }, { once: true });
-  }, { threshold: 0.35 });
+  const states = ctas.map((cta) => {
+    let played = false;
+    const observer = new IntersectionObserver((entries) => {
+      if (played || !entries.some((entry) => entry.isIntersecting)) return;
+      played = true;
+      observer.disconnect();
+      cta.classList.add("is-spotlit");
+      cta.addEventListener("animationend", () => {
+        cta.classList.remove("is-spotlit");
+      }, { once: true });
+    }, { threshold: 0.35 });
+    observer.observe(cta);
+    return { cta, observer };
+  });
 
   reduceMotion.addEventListener?.("change", (event) => {
     if (!event.matches) return;
-    observer.disconnect();
-    cta.classList.remove("is-spotlit");
+    states.forEach(({ cta, observer }) => {
+      observer.disconnect();
+      cta.classList.remove("is-spotlit");
+    });
   });
-  observer.observe(cta);
 })();
   </script>
 </body>
