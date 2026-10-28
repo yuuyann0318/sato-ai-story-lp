@@ -223,7 +223,7 @@ a { color: inherit; }
 .line-cta[aria-disabled="true"] { cursor: default; }
 .line-cta--hero { margin-top: clamp(32px, 4vw, 48px); }
 .line-cta.is-motion-active .line-cta__surface {
-  animation: line-cta-presence 4.2s ease-in-out infinite;
+  animation: line-cta-presence 2.1s ease-in-out infinite;
 }
 
 @keyframes line-cta-presence {
@@ -231,7 +231,7 @@ a { color: inherit; }
     transform: scale(1);
   }
   50% {
-    transform: scale(1.025);
+    transform: scale(1.05);
   }
 }
 
@@ -313,6 +313,13 @@ a { color: inherit; }
   .line-cta__icon { height: 40px; }
   .line-cta__label { padding: 12px 4px; }
   .line-cta__chevron { width: 13px; height: 13px; border-width: 3px; }
+}
+
+@media (min-width: 500px) and (max-width: 599px) {
+  .line-cta {
+    width: calc(100% + 10px);
+    margin-inline: -5px;
+  }
 }
 
 @media (max-width: 319px) {
