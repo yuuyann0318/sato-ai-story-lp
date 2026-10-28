@@ -10,7 +10,7 @@
   <style>
 @font-face {
   font-family: "Sato Editorial";
-  src: url("assets/fonts/noto-serif-jp.woff2") format("woff2");
+  src: url("assets/fonts/noto-serif-jp.woff2?v=b23250fb04c655b1fce3dc7852884c7d26d724b1968f56fcae796644e4e24527") format("woff2");
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
@@ -207,11 +207,12 @@ a { color: inherit; }
 }
 .line-cta__label {
   min-width: 0;
-  padding-inline: 18px;
+  padding: 12px 18px;
   color: #fff;
-  white-space: nowrap;
+  white-space: normal;
   text-shadow: 0 1px 1px #00672db8;
 }
+.line-cta__label span { display: inline-block; }
 .line-cta__chevron {
   width: 15px;
   height: 15px;
@@ -296,7 +297,7 @@ a { color: inherit; }
   }
   .line-cta__icon-wrap { border-radius: 13px 0 0 13px; }
   .line-cta__icon { height: 40px; }
-  .line-cta__label { padding-inline: 8px; }
+  .line-cta__label { padding: 12px 4px; }
   .line-cta__chevron { width: 13px; height: 13px; border-width: 3px; }
 }
 
@@ -342,7 +343,7 @@ a { color: inherit; }
             <p class="question"><span>あなたは今</span><span>どんな未来を</span><span>想像していますか？</span></p>
             <p><span class="keep">子どもや孫と一緒に</span><span class="keep">旅行した時に、</span><span class="keep">旅費を負担できたり、</span><span class="keep">ランドセルを買ったり、</span><span class="keep">お年玉をあげたり。</span></p>
             <p><span class="keep">行きたい国や場所、</span><span class="keep">自分自身の美容や趣味に</span><span class="keep">お金と時間を投資したり。</span></p>
-            <p>そんないわば当たり前の生活を今手に入れられていますか？<br data-future-line-break>将来手に入れられそうですか？</p>
+            <p>そんないわば”当たり前”の生活を今手に入れられていますか？<br data-future-line-break>将来手に入れられそうですか？</p>
             <p>もし、そうではないとしたら、あなたは何を捨てて、どこまで挑戦できますか？</p>
             <p><span class="keep">私は絶対に諦めず、</span><span class="keep">お店を取り戻して、</span><span class="keep">助けてくれたみんなに</span><span class="keep">恩返しをするまで</span><span class="keep">絶対にあきらめません。</span></p>
             <p>私と一緒にみんなも<span class="keep">頑張りませんか？</span></p>
@@ -350,12 +351,12 @@ a { color: inherit; }
             <p>では、次はオフ会などで直接お会いできるのを<span class="keep">楽しみにしています！</span></p>
           </div>
 
-          <a class="line-cta" data-line-cta aria-disabled="true" tabindex="-1" aria-label="LINEで次へ進む">
+          <a class="line-cta" data-line-cta aria-disabled="true" tabindex="-1" aria-label="AI在宅ワーク体験会に申し込む！">
             <span class="line-cta__surface" aria-hidden="true"></span>
             <span class="line-cta__icon-wrap" aria-hidden="true">
               <img class="line-cta__icon" src="assets/line-brand-icon.png" width="1001" height="1000" alt="" decoding="async">
             </span>
-            <span class="line-cta__label">LINEで次へ進む</span>
+            <span class="line-cta__label"><span>AI在宅ワーク</span><span>体験会に</span><span>申し込む！</span></span>
             <span class="line-cta__chevron" aria-hidden="true"></span>
           </a>
         </div>
