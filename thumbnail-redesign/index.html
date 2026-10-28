@@ -26,8 +26,6 @@
   --gold-dark: #806325;
   --line: #06c755;
   --line-label: #06c755;
-  --line-cta-peak-x: 1.05;
-  --line-cta-second-x: 1.035;
   --font: "Sato Editorial", "Hiragino Mincho ProN", "Yu Mincho", serif;
   --display: "Sato Editorial", "Hiragino Mincho ProN", "Yu Mincho", serif;
 }
@@ -185,9 +183,9 @@ a { color: inherit; }
   border: 2px solid var(--line);
   border-radius: inherit;
   background: var(--line-label);
-  box-shadow: 0 7px 0 #007b35, 0 14px 38px #06c7559e;
-  transform-origin: center;
-  transform: translateY(0) scale(1);
+  box-shadow: 0 0 22px #06c7554d;
+  transform-origin: 50% 50%;
+  transform: scale(1);
 }
 .line-cta__icon-wrap,
 .line-cta__label,
@@ -211,12 +209,7 @@ a { color: inherit; }
   padding: 12px 18px;
   color: #fff;
   white-space: normal;
-  text-shadow:
-    -1px -1px 0 #00672d,
-    1px -1px 0 #00672d,
-    -1px 1px 0 #00672d,
-    1px 1px 0 #00672d,
-    0 2px 3px #00672d;
+  text-shadow: none;
 }
 .line-cta__label span { display: inline-block; }
 .line-cta__chevron {
@@ -230,28 +223,16 @@ a { color: inherit; }
 .line-cta[aria-disabled="true"] { cursor: default; }
 .line-cta--hero { margin-top: clamp(32px, 4vw, 48px); }
 .line-cta.is-motion-active .line-cta__surface {
-  animation: line-cta-presence 3.2s cubic-bezier(.22, .61, .36, 1) infinite;
+  animation: line-cta-presence 4.2s ease-in-out infinite;
 }
 
 @keyframes line-cta-presence {
   0%, 100% {
-    transform: translateY(0) scale(1);
-    box-shadow: 0 7px 0 #007b35, 0 14px 38px #06c7559e;
+    transform: scale(1);
   }
-  16% {
-    transform: translateY(-10px) scale(var(--line-cta-peak-x), 1.22);
-    box-shadow: 0 10px 0 #007b35, 0 20px 58px #06c755c2;
+  50% {
+    transform: scale(1.025);
   }
-  30% {
-    transform: translateY(3px) scale(.99, .96);
-    box-shadow: 0 4px 0 #007b35, 0 10px 28px #06c7554d;
-  }
-  60% {
-    transform: translateY(-7px) scale(var(--line-cta-second-x), 1.16);
-    box-shadow: 0 9px 0 #007b35, 0 18px 48px #06c7559e;
-  }
-  74% { transform: translateY(2px) scale(.995, .98); }
-  84% { transform: translateY(0) scale(1); }
 }
 
 @media (min-width: 1600px) {
@@ -300,10 +281,6 @@ a { color: inherit; }
     line-height: 1.9;
     letter-spacing: .01em;
   }
-}
-
-@media (max-width: 700px) {
-  :root { --line-cta-peak-x: 1.035; --line-cta-second-x: 1.025; }
 }
 
 @media (max-width: 599px) {
