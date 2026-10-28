@@ -10,7 +10,7 @@
   <style>
 @font-face {
   font-family: "Sato Editorial";
-  src: url("assets/fonts/noto-serif-jp.woff2?v=b23250fb04c655b1fce3dc7852884c7d26d724b1968f56fcae796644e4e24527") format("woff2");
+  src: url("assets/fonts/noto-serif-jp.woff2?v=6d4a02100ecfb34b07d731e2d8c063ac3a3edfa5f46268e43c1f81769ce65f00") format("woff2");
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
@@ -25,7 +25,7 @@
   --gold: #d8ba74;
   --gold-dark: #806325;
   --line: #06c755;
-  --line-label: #00a546;
+  --line-label: #06c755;
   --line-cta-peak-x: 1.05;
   --line-cta-second-x: 1.035;
   --font: "Sato Editorial", "Hiragino Mincho ProN", "Yu Mincho", serif;
@@ -185,7 +185,7 @@ a { color: inherit; }
   border: 2px solid var(--line);
   border-radius: inherit;
   background: var(--line-label);
-  box-shadow: 0 7px 0 #007b35, 0 14px 34px #06c75542;
+  box-shadow: 0 7px 0 #007b35, 0 14px 38px #06c7559e;
   transform-origin: center;
   transform: translateY(0) scale(1);
 }
@@ -211,7 +211,12 @@ a { color: inherit; }
   padding: 12px 18px;
   color: #fff;
   white-space: normal;
-  text-shadow: 0 1px 1px #00672db8;
+  text-shadow:
+    -1px -1px 0 #00672d,
+    1px -1px 0 #00672d,
+    -1px 1px 0 #00672d,
+    1px 1px 0 #00672d,
+    0 2px 3px #00672d;
 }
 .line-cta__label span { display: inline-block; }
 .line-cta__chevron {
@@ -224,14 +229,14 @@ a { color: inherit; }
 }
 .line-cta[aria-disabled="true"] { cursor: default; }
 .line-cta--hero { margin-top: clamp(32px, 4vw, 48px); }
-.line-cta.is-spotlit .line-cta__surface {
-  animation: line-cta-arrival 3.6s cubic-bezier(.22, .61, .36, 1) 1 both;
+.line-cta.is-motion-active .line-cta__surface {
+  animation: line-cta-presence 3.2s cubic-bezier(.22, .61, .36, 1) infinite;
 }
 
-@keyframes line-cta-arrival {
+@keyframes line-cta-presence {
   0%, 100% {
     transform: translateY(0) scale(1);
-    box-shadow: 0 7px 0 #007b35, 0 14px 34px #06c75542;
+    box-shadow: 0 7px 0 #007b35, 0 14px 38px #06c7559e;
   }
   16% {
     transform: translateY(-10px) scale(var(--line-cta-peak-x), 1.22);
@@ -341,7 +346,7 @@ a { color: inherit; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .line-cta.is-spotlit .line-cta__surface { animation: none !important; transform: none !important; }
+  .line-cta.is-motion-active .line-cta__surface { animation: none !important; transform: none !important; }
 }
   </style>
 </head>
@@ -379,17 +384,17 @@ a { color: inherit; }
 
         <div class="message-column">
           <div class="message-copy" data-message>
-            <p><span class="phrase">私は決して</span><span class="phrase">余裕があったから</span><span class="phrase">始めたわけでも、</span><span class="phrase">甘い覚悟で</span><span class="phrase">始めた</span><span class="keep">わけではありません。</span></p>
-            <p data-opening-continuation><span class="phrase">ただ、本気で、</span><span class="phrase">自分の夢と向き合い、</span><span class="phrase">マイナスの力を</span><span class="phrase">プラスに変えて、</span><span class="phrase">現状を変えるために</span><span class="phrase">自ら経験したことのない</span><span class="phrase">AIという世界に飛び込み、</span><span class="phrase">ここまでの結果を</span><span class="phrase">残すまでになりました。</span></p>
+            <p><span class="phrase">私は決して</span><span class="phrase">余裕があったから</span><span class="phrase">始めたわけでも、</span><span class="phrase">甘い覚悟で</span><span class="phrase">始めた</span><span class="keep">わけでもありません。</span></p>
+            <p data-opening-continuation><span class="phrase">ただ、本気で</span><span class="phrase">自分の夢を向き合い、</span><span class="phrase">-の力を</span><span class="phrase">+に変えて、</span><span class="phrase">ここまでの結果を</span><span class="keep">残すことができました。</span><span class="phrase">現状を変えるために、</span><span class="phrase">自ら新しい</span><span class="phrase">AIという世界に</span><span class="keep">飛び込んだんです。</span></p>
             <p class="question"><span class="phrase">あなたは今</span><span class="phrase">どんな未来を</span><span class="phrase">想像していますか？</span></p>
             <p><span class="keep">子どもや孫と一緒に</span><span class="keep">旅行した時に、</span><span class="keep">旅費を負担できたり、</span><span class="keep">ランドセルを買ったり、</span><span class="keep">お年玉をあげたり。</span></p>
             <p><span class="keep">行きたい国や場所、</span><span class="keep">自分自身の美容や趣味に</span><span class="keep">お金と時間を投資したり。</span></p>
-            <p><span class="phrase">そんないわば</span><span class="phrase">”当たり前”の生活を</span><span class="phrase">今手に入れられていますか？</span><br data-future-line-break><span class="keep">将来手に入れられそうですか？</span></p>
+            <p><span class="phrase">そんないわば</span><span class="phrase">”当たり前”の生活を</span><span class="phrase">今、手に入れられていますか？</span><br data-future-line-break><span class="phrase">近い将来</span><span class="keep">手に入れられそうですか？</span></p>
             <p><span class="phrase">もし、</span><span class="phrase">そうではないとしたら、</span><span class="phrase">あなたは何を捨てて、</span><span class="phrase">どこまで挑戦できますか？</span></p>
-            <p><span class="keep">私は絶対に諦めず、</span><span class="keep">お店を取り戻して、</span><span class="keep">助けてくれたみんなに</span><span class="keep">恩返しをするまで</span><span class="keep">絶対にあきらめません。</span></p>
-            <p><span class="phrase">私と一緒に</span><span class="phrase">みんなも</span><span class="keep">頑張りませんか？</span></p>
+            <p><span class="keep">私は絶対に諦めず、</span><span class="keep">お店を取り戻して、</span><span class="keep">助けてくれたみんなに</span><span class="keep">恩返しをするまで</span><span class="keep">やり遂げます。</span></p>
+            <p><span class="phrase">私と一緒に</span><span class="phrase">あなたも</span><span class="keep">頑張りませんか？</span></p>
             <p class="decision"><span class="phrase">最後、ここで、</span><strong><span>自分の手で、</span><span>人生を変える</span><span>チャンスを</span><span>掴み取ってください。</span></strong></p>
-            <p><span class="phrase">では、次は</span><span class="phrase">オフ会などで</span><span class="phrase">直接お会いできるのを</span><span class="keep">楽しみにしています！</span></p>
+            <p><span class="phrase">では次は、</span><span class="phrase">オフ会などで</span><span class="phrase">直接お会いできるのを</span><span class="keep">楽しみにしています！</span></p>
           </div>
 
           <a class="line-cta" data-line-cta aria-disabled="true" tabindex="-1" aria-label="AI在宅ワーク体験会に申し込む！">
@@ -409,30 +414,31 @@ a { color: inherit; }
 (() => {
   const ctas = [...document.querySelectorAll("[data-line-cta]")];
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-  if (!ctas.length || reduceMotion.matches || !("IntersectionObserver" in window)) return;
+  if (!ctas.length || !("IntersectionObserver" in window)) return;
 
   const states = ctas.map((cta) => {
-    let played = false;
+    const state = { cta, inView: false };
     const observer = new IntersectionObserver((entries) => {
-      if (played || !entries.some((entry) => entry.isIntersecting)) return;
-      played = true;
-      observer.disconnect();
-      cta.classList.add("is-spotlit");
-      cta.addEventListener("animationend", () => {
-        cta.classList.remove("is-spotlit");
-      }, { once: true });
+      state.inView = entries.some((entry) => entry.isIntersecting);
+      sync(state);
     }, { threshold: 0.35 });
     observer.observe(cta);
-    return { cta, observer };
+    state.observer = observer;
+    return state;
   });
 
-  reduceMotion.addEventListener?.("change", (event) => {
-    if (!event.matches) return;
-    states.forEach(({ cta, observer }) => {
-      observer.disconnect();
-      cta.classList.remove("is-spotlit");
-    });
-  });
+  function sync(state) {
+    const shouldMove = state.inView && !document.hidden && !reduceMotion.matches;
+    if (shouldMove) state.cta.classList.add("is-motion-active");
+    else state.cta.classList.remove("is-motion-active");
+  }
+
+  function syncAll() {
+    states.forEach(sync);
+  }
+
+  document.addEventListener("visibilitychange", syncAll);
+  reduceMotion.addEventListener?.("change", syncAll);
 })();
   </script>
 </body>
